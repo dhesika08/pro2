@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Career Compass AI helps you discover your ideal career path through AI-powered assessments, personalized roadmaps, and skill gap analysis.">
+    <title>Career Compass AI - Discover Your Ideal Career Path with AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1> Career Compass AI</h1>
+        <p>Discover Your Ideal Career Path With AI</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#quiz">Career Quiz</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+        </ul>
+
+        <button onclick="toggleDarkMode()">Dark Mode</button>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to Career Compass AI</h2>
+        <p>
+            Find the best career based on your interests, skills, and goals.
+        </p>
+
+        <button onclick="startQuiz()">Start Career Assessment</button>
+
+        <h2>Skill Gap Analyzer</h2>
+
+        <input type="text" id="skills" placeholder="Java, HTML, CSS">
+
+        <button onclick="analyzeSkills()">Analyze</button>
+
+        <div id="skillResult"></div>
+    </section>
+
+    <section id="quiz">
+        <h2>Career Assessment Quiz</h2>
+
+        <div class="question">
+            <p>1. Do you enjoy coding?</p>
+            <button onclick="answer('coding')">Yes</button>
+            <button onclick="answer('none')">No</button>
+        </div>
+
+        <div class="question">
+            <p>2. Do you like mathematics?</p>
+            <button onclick="answer('math')">Yes</button>
+            <button onclick="answer('none')">No</button>
+        </div>
+
+        <div class="question">
+            <p>3. Are you interested in security?</p>
+            <button onclick="answer('security')">Yes</button>
+            <button onclick="answer('none')">No</button>
+        </div>
+
+        <div class="question">
+            <p>4. Do you enjoy web design?</p>
+            <button onclick="answer('web')">Yes</button>
+            <button onclick="answer('none')">No</button>
+        </div>
+
+        <button onclick="showCareerResult()">
+            Get Recommendation
+        </button>
+
+        <h3 id="result"></h3>
+
+        <canvas id="careerChart"></canvas>
+
+        <h3>Recommended Internships</h3>
+        <div id="internships"></div>
+
+        <div id="interviewQuestions"></div>
+
+    </section>
+
+
+    <section id="roadmap">
+        <h2>Learning Roadmap</h2>
+
+        <div id="roadmapResult">Select a career to view roadmap.</div>
+    </section>
+
+    <section>
+        <h2>Roadmap Progress</h2>
+
+        <label>
+
+            <input type="checkbox" class="roadmapStep"> Learn Basics
+
+        </label>
+
+        <br>
+
+        <label>
+
+            <input type="checkbox" class="roadmapStep"> Build Projects
+        </label>
+        <br>
+
+        <label>
+
+            <input type="checkbox" class="roadmapStep"> Get Internship
+        </label>
+        <br>
+
+        <button onclick="calculateRoadmapProgress()"> Calculate Progress</button>
+
+        <div id="roadmapProgress"></div>
+
+
+    </section>
+
+    <section id="dashboard">
+        <h2>Dashboard</h2>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Career Selected</h3>
+                <p id="careerName">Not Selected</p>
+            </div>
+
+            <div class="card">
+                <h3>Progress</h3>
+                <progress value="0" max="100" id="progressBar"></progress>
+            </div>
+
+            <div class="card">
+                <h3>Resume Readiness Score</h3>
+                <p id="resumeScore">0%</p>
+            </div>
+
+            <div class="card">
+                <h3>Achievements</h3>
+                <p id="badges">
+                    No Badges Yet
+                </p>
+            </div>
+        </div>
+
+        <div class="resume-calculator">
+            <h2>Resume Score Calculator</h2>
+            <div class="calculator-inputs">
+                <input type="number" id="projects" placeholder="Projects" min="0">
+                <input type="number" id="certifications" placeholder="Certifications" min="0">
+            </div>
+            <button onclick="calculateResume()">Calculate</button>
+            <div id="resumeResult"></div>
+        </div>
+
+        <div class="dashboard-actions">
+            <button onclick="downloadReport()">Download Report</button>
+            <button onclick="clearDashboard()">Reset Dashboard</button>
+        </div>
+    </section>
+
+    <section id="chatbot">
+        <h2>AI Career Chatbot</h2>
+
+        <div id="chatMessages"></div>
+
+        <input type="text" id="chatInput" placeholder="Ask career questions"
+            onkeydown="if(event.key==='Enter')sendMessage()">
+
+        <button onclick="sendMessage()">Send</button>
+    </section>
+
+    <section id="resumeBuilder">
+        <h2>Resume Builder</h2>
+
+        <input id="name" placeholder="Name">
+        <input id="email" placeholder="Email">
+        <input id="resumeSkills" placeholder="Skills">
+
+        <button onclick="generateResume()">Generate Resume</button>
+
+        <div id="resumePreview"></div>
+    </section>
+
+    <section>
+        <h2>Career Salary Predictor</h2>
+
+        <select id="careerSelect">
+
+            <option>AI Engineer</option>
+            <option>Web Developer</option>
+            <option>Cyber Security</option>
+            <option>Data Scientist</option>
+        </select>
+
+        <button onclick="predictSalary()">Predict Salary</button>
+
+        <div id="salaryResult"></div>
+    </section>
+
+    <button onclick="downloadCareerReport()">Download Report</button>
+
+
+    <footer>
+        <p>Career Compass AI 2026</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="quiz.js"></script>
+    <script src="roadmap.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
+
