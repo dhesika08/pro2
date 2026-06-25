@@ -209,3 +209,12 @@ Design
   --> Portfolio Analyzer
   --> Interview Practice Platform
 
+
+  VERSION
+
+  Career Compass AI v2.0
+
+  An all-in-one Career Guidance and Student Productivity Platform built using HTML, CSS, and JavaScript.
+
+
+
