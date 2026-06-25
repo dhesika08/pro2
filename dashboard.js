@@ -21,18 +21,9 @@ function updateDashboard() {
 
 function calculateResumeScore() {
 
-    let projects = 3;
-    let certifications = 2;
-    let internships = 1;
-
-    let score = (projects * 15) + (certifications * 10) + (internships * 20);
-
-    if (score > 100) {
-        score = 100;
-    }
+    let score = parseInt(localStorage.getItem("resumeScore")) || 0;
 
     document.getElementById("resumeScore").innerHTML = score + "%";
-    localStorage.setItem("resumeScore", score);
 }
 
 function calculateResume() {
@@ -46,6 +37,11 @@ function calculateResume() {
         score = 100;
 
     document.getElementById("resumeResult").innerHTML = "Resume Score: " + score + "%";
+    
+    document.getElementById("resumeScore").innerHTML = score + "%";
+    localStorage.setItem("resumeScore", score);
+    updateProgress();
+    showBadges();
 }
 
 function updateProgress() {

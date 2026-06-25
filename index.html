@@ -28,9 +28,15 @@
             <li><a href="#quiz">Career Quiz</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
             <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#workspace">Workspace</a></li>
+            <li><a href="#profile">Profile</a></li>
         </ul>
 
-        <button onclick="toggleDarkMode()">Dark Mode</button>
+        <div style="display:flex; gap:10px; align-items:center;">
+            <span id="navGreeting" style="font-weight:600; font-size:0.9rem;"></span>
+            <button id="loginBtn" onclick="openLoginModal()">Login</button>
+            <button onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
     </nav>
 
     <section id="home">
@@ -131,6 +137,9 @@
 
     <section id="dashboard">
         <h2>Dashboard</h2>
+        <div id="quoteContainer" style="text-align: center; font-style: italic; color: var(--accent-secondary); margin-bottom: 20px; font-size: 1.1rem; padding: 10px; background: var(--bg-primary); border-radius: 8px; border: 1px solid var(--border-color);">
+            "Loading inspiration..."
+        </div>
 
         <div class="dashboard-grid">
             <div class="card">
@@ -169,6 +178,59 @@
         <div class="dashboard-actions">
             <button onclick="downloadReport()">Download Report</button>
             <button onclick="clearDashboard()">Reset Dashboard</button>
+        </div>
+    </section>
+
+    <section id="workspace">
+        <h2>Study Workspace</h2>
+        
+        <div class="dashboard-grid">
+            
+            <div class="card" id="goalTracker">
+                <h3>My Career Goal</h3>
+                <input type="text" id="careerGoalInput" placeholder="Enter your ultimate career goal..." style="width:100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); text-align: center;">
+                <button onclick="saveGoal()">Save Goal</button>
+            </div>
+
+            <div class="card" id="pomodoroTimer">
+                <h3>Study Timer</h3>
+                <div id="timeDisplay" style="font-size: 3.5rem; font-weight: bold; color: var(--accent-primary); margin: 15px 0;">25:00</div>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <button onclick="startTimer()">Start</button>
+                    <button onclick="pauseTimer()">Pause</button>
+                    <button onclick="resetTimer()">Reset</button>
+                </div>
+            </div>
+
+            <div class="card" id="notesArea">
+                <h3>Quick Notes</h3>
+                <textarea id="studyNotes" placeholder="Jot down important concepts here..." style="width:100%; height: 120px; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); resize: vertical;"></textarea>
+                <button onclick="saveNotes()" style="margin-top: 10px;">Save Notes</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="profile">
+        <h2>User Profile</h2>
+        <div style="background: var(--bg-secondary); padding: 40px; border-radius: 16px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); text-align: center; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            
+            <div style="margin-bottom: 20px;">
+                <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-primary); margin-bottom: 15px;">
+                <br>
+                <input type="file" id="profilePicInput" accept="image/*" style="display:none;" onchange="uploadProfilePic(event)">
+                <button onclick="document.getElementById('profilePicInput').click()">Upload Picture</button>
+            </div>
+
+            <h3 id="profileNameDisplay" style="font-size: 2.2rem; margin-bottom: 5px;">Guest User</h3>
+            <p id="profileEmailDisplay" style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.1rem;">Not logged in</p>
+
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <div>
+                    <h4 style="color: var(--text-secondary); font-size: 1rem;">Login Streak</h4>
+                    <p id="streakCount" style="font-size: 2rem; font-weight: bold; color: var(--accent-secondary);">0 Days</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -213,6 +275,19 @@
 
     <button onclick="downloadCareerReport()">Download Report</button>
 
+    <!-- Auth Modal -->
+    <div id="authModal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="background: var(--bg-secondary); padding: 40px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: var(--card-shadow); border: 1px solid var(--border-color);">
+            <h3 style="margin-bottom: 20px; font-size: 1.8rem; color: var(--accent-primary);">Welcome Back</h3>
+            <input type="text" id="authName" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary);">
+            <input type="email" id="authEmail" placeholder="Your Email" style="width: 100%; padding: 12px; margin-bottom: 25px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary);">
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="loginUser()" style="flex: 1;">Login</button>
+                <button onclick="closeLoginModal()" style="flex: 1; background: var(--text-secondary);">Cancel</button>
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         <p>Career Compass AI 2026 | <a href="https://github.com/dhesika08/pro2" target="_blank" style="color: inherit; text-decoration: underline;">View on GitHub</a></p>
@@ -223,6 +298,14 @@
     <script src="quiz.js"></script>
     <script src="roadmap.js"></script>
     <script src="dashboard.js"></script>
+    <script src="Career Compass AI/auth.js"></script>
+    <script src="Career Compass AI/goal.js"></script>
+    <script src="Career Compass AI/notes.js"></script>
+    <script src="Career Compass AI/profile.js"></script>
+    <script src="Career Compass AI/profilePic.js"></script>
+    <script src="Career Compass AI/quotes.js"></script>
+    <script src="Career Compass AI/streak.js"></script>
+    <script src="Career Compass AI/timer.js"></script>
 </body>
 
 </html>

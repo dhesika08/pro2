@@ -1,38 +1,4 @@
-:root {
-    /* Color Tokens (Light Mode Default) */
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --accent-primary: #6366f1;
-    /* Indigo */
-    --accent-secondary: #8b5cf6;
-    /* Purple */
-    --accent-glow: rgba(99, 102, 241, 0.15);
-    --border-color: #e2e8f0;
-    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --navbar-bg: #0f172a;
-    --footer-bg: #0f172a;
-    --progress-bg: #e2e8f0;
-    --progress-fill: linear-gradient(90deg, #6366f1, #8b5cf6);
-    --transition-speed: 0.3s;
-}
-
-/* Dark Mode Tokens */
-body.dark {
-    --bg-primary: #0b0f19;
-    --bg-secondary: #161e2e;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --border-color: #243049;
-    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-    --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    --navbar-bg: #0b0f19;
-    --footer-bg: #030712;
-    --progress-bg: #1f2937;
-}
-
+/* ===== Reset ===== */
 * {
     margin: 0;
     padding: 0;
@@ -40,21 +6,42 @@ body.dark {
     font-family: 'Inter', sans-serif;
 }
 
-body {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+/* ===== Variables ===== */
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #475569;
+    --accent: #6366f1;
+    --accent2: #8b5cf6;
+    --border: #e2e8f0;
+    --nav-bg: #0f172a;
+    --progress-track: #e2e8f0;
 }
 
-h1,
-h2,
-h3,
-h4 {
+body.dark {
+    --bg: #0b0f19;
+    --surface: #161e2e;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #243049;
+    --nav-bg: #0b0f19;
+    --progress-track: #1f2937;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4 {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
 }
 
+/* ===== Header ===== */
 header {
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
     background-size: 200% 200%;
@@ -66,17 +53,9 @@ header {
 }
 
 @keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header h1 {
@@ -92,8 +71,9 @@ header p {
     opacity: 0.9;
 }
 
+/* ===== Navigation ===== */
 nav {
-    background: var(--navbar-bg);
+    background: var(--nav-bg);
     padding: 15px 10%;
     display: flex;
     justify-content: space-between;
@@ -101,7 +81,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border);
     backdrop-filter: blur(10px);
 }
 
@@ -116,7 +96,7 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: color var(--transition-speed);
+    transition: color 0.3s;
     position: relative;
     padding: 5px 0;
 }
@@ -128,8 +108,8 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--accent-primary);
-    transition: width var(--transition-speed);
+    background: var(--accent);
+    transition: width 0.3s;
 }
 
 nav a:hover {
@@ -142,14 +122,14 @@ nav a:hover::after {
 
 nav button {
     background: transparent;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     padding: 8px 16px;
     color: white;
     border-radius: 20px;
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all var(--transition-speed);
+    transition: all 0.3s;
     margin: 0;
 }
 
@@ -159,6 +139,7 @@ nav button:hover {
     color: #60a5fa;
 }
 
+/* ===== Sections ===== */
 section {
     padding: 60px 10%;
     max-width: 1200px;
@@ -172,19 +153,19 @@ section {
 #home h2 {
     font-size: 2.5rem;
     margin-bottom: 15px;
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
 #home p {
     font-size: 1.2rem;
     max-width: 600px;
-    margin: 0 auto 30px auto;
-    color: var(--text-secondary);
+    margin: 0 auto 30px;
+    color: var(--muted);
 }
 
-/* Base button styles */
+/* ===== Buttons ===== */
 button:not(nav button) {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
     color: white;
     border: none;
     padding: 12px 24px;
@@ -193,40 +174,37 @@ button:not(nav button) {
     border-radius: 8px;
     cursor: pointer;
     margin: 8px;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-    transition: all var(--transition-speed) cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:not(nav button):hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
-    filter: brightness(1.05);
 }
 
 button:not(nav button):active {
     transform: translateY(0);
 }
 
-/* Skills Gap Section */
+/* ===== Skill Gap Input ===== */
 #home input[type="text"] {
     width: 100%;
     max-width: 400px;
     padding: 12px 20px;
     font-size: 1rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border);
     border-radius: 8px;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
+    background: var(--surface);
+    color: var(--text);
     outline: none;
-    transition: all var(--transition-speed);
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin: 20px 10px 20px 0;
 }
 
 #home input[type="text"]:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 4px var(--accent-glow);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 #skillResult {
@@ -235,16 +213,16 @@ button:not(nav button):active {
     width: 100%;
     max-width: 500px;
     text-align: left;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 #skillResult h3 {
     margin-bottom: 12px;
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
 .missing-skills-list {
@@ -270,14 +248,13 @@ button:not(nav button):active {
     text-align: center;
 }
 
-/* Career Quiz Section */
+/* ===== Career Quiz ===== */
 #quiz {
-    background: var(--bg-secondary);
+    background: var(--surface);
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
     padding: 40px 8%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px 0;
 }
 
 #quiz h2 {
@@ -286,12 +263,12 @@ button:not(nav button):active {
 }
 
 .question {
-    background: var(--bg-primary);
+    background: var(--bg);
     padding: 24px;
     margin-bottom: 24px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
-    transition: transform var(--transition-speed);
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
 }
 
 .question:hover {
@@ -312,15 +289,15 @@ button:not(nav button):active {
 #result {
     margin-top: 35px;
     padding: 25px;
-    background: var(--bg-primary);
+    background: var(--bg);
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
 }
 
 #result h3 {
     margin-bottom: 20px;
     text-align: center;
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
 .compatibility-list {
@@ -331,23 +308,21 @@ button:not(nav button):active {
 }
 
 .compatibility-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 16px 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: all var(--transition-speed);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .compatibility-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-primary);
-    box-shadow: var(--card-hover-shadow);
-    background: linear-gradient(185deg, var(--bg-secondary), var(--accent-glow));
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .career-title {
@@ -360,31 +335,31 @@ button:not(nav button):active {
 .career-percentage {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
 .select-tip {
     text-align: center;
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     margin-top: 15px;
 }
 
-/* Roadmap Section */
+/* ===== Roadmap ===== */
 #roadmapResult {
-    background: var(--bg-secondary);
+    background: var(--surface);
     padding: 40px;
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border);
     margin-top: 25px;
 }
 
 #roadmapResult h3 {
     font-size: 1.8rem;
     margin-bottom: 25px;
-    color: var(--accent-primary);
-    border-bottom: 2px solid var(--border-color);
+    color: var(--accent);
+    border-bottom: 2px solid var(--border);
     padding-bottom: 10px;
 }
 
@@ -398,9 +373,9 @@ button:not(nav button):active {
 
 #roadmapResult ul li {
     padding: 12px 16px 12px 35px;
-    background: var(--bg-primary);
+    background: var(--bg);
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     position: relative;
     font-weight: 500;
 }
@@ -427,36 +402,35 @@ button:not(nav button):active {
     color: #10b981;
 }
 
-/* Dashboard Section */
+/* ===== Dashboard ===== */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
-    margin-top: 25px;
-    margin-bottom: 35px;
+    margin: 25px 0 35px;
 }
 
 .card {
-    background: var(--bg-secondary);
+    background: var(--surface);
     padding: 30px 24px;
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--card-hover-shadow);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
     font-size: 1.05rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -465,42 +439,42 @@ button:not(nav button):active {
 .card p {
     font-size: 1.6rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text);
 }
 
 #careerName {
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
-/* Progress card tweaks */
+/* ===== Progress Bar ===== */
 progress {
     width: 100%;
     height: 14px;
     border-radius: 10px;
     overflow: hidden;
     border: none;
-    background-color: var(--progress-bg);
+    background: var(--progress-track);
 }
 
 progress::-webkit-progress-bar {
-    background-color: var(--progress-bg);
+    background: var(--progress-track);
     border-radius: 10px;
 }
 
 progress::-webkit-progress-value {
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
     border-radius: 10px;
 }
 
 progress::-moz-progress-bar {
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
     border-radius: 10px;
 }
 
 #badges {
     font-size: 1.1rem !important;
     font-weight: 600 !important;
-    color: var(--accent-secondary) !important;
+    color: var(--accent2) !important;
     line-height: 1.4;
 }
 
@@ -508,12 +482,12 @@ progress::-moz-progress-bar {
     text-align: center;
 }
 
-/* Chatbot Section */
+/* ===== Chatbot ===== */
 #chatbot {
-    background: var(--bg-secondary);
+    background: var(--surface);
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border);
     padding: 40px 8%;
     margin-top: 40px;
 }
@@ -524,8 +498,8 @@ progress::-moz-progress-bar {
 }
 
 #chatMessages {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
     min-height: 200px;
@@ -538,40 +512,40 @@ progress::-moz-progress-bar {
     padding: 10px 14px;
     margin-bottom: 10px;
     border-radius: 10px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--surface);
+    border: 1px solid var(--border);
     font-size: 0.95rem;
     line-height: 1.5;
 }
 
 #chatMessages p b {
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
 #chatbot input[type="text"] {
     width: calc(100% - 130px);
     padding: 12px 20px;
     font-size: 1rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border);
     border-radius: 8px;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: var(--bg);
+    color: var(--text);
     outline: none;
-    transition: all var(--transition-speed);
+    transition: border-color 0.2s, box-shadow 0.2s;
     margin-right: 10px;
 }
 
 #chatbot input[type="text"]:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 4px var(--accent-glow);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-/* Resume Builder Section */
+/* ===== Resume Builder ===== */
 #resumeBuilder {
-    background: var(--bg-secondary);
+    background: var(--surface);
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border);
     padding: 40px 8%;
     margin-top: 40px;
 }
@@ -585,20 +559,20 @@ progress::-moz-progress-bar {
     display: block;
     width: 100%;
     max-width: 500px;
-    margin: 0 auto 16px auto;
+    margin: 0 auto 16px;
     padding: 12px 20px;
     font-size: 1rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border);
     border-radius: 8px;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: var(--bg);
+    color: var(--text);
     outline: none;
-    transition: all var(--transition-speed);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 #resumeBuilder input:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 4px var(--accent-glow);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 #resumeBuilder button {
@@ -608,10 +582,10 @@ progress::-moz-progress-bar {
 
 #resumePreview {
     max-width: 500px;
-    margin: 25px auto 0 auto;
+    margin: 25px auto 0;
     padding: 30px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 12px;
     text-align: center;
 }
@@ -622,22 +596,22 @@ progress::-moz-progress-bar {
 
 #resumePreview h3 {
     font-size: 1.5rem;
-    color: var(--accent-primary);
+    color: var(--accent);
     margin-bottom: 8px;
 }
 
 #resumePreview p {
-    color: var(--text-secondary);
+    color: var(--muted);
     font-size: 1rem;
     margin-bottom: 4px;
 }
 
-/* Resume Score Calculator */
+/* ===== Resume Score Calculator ===== */
 .resume-calculator {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     padding: 30px;
     margin-bottom: 35px;
     text-align: center;
@@ -658,28 +632,28 @@ progress::-moz-progress-bar {
 .calculator-inputs input {
     padding: 12px 20px;
     font-size: 1rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border);
     border-radius: 8px;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: var(--bg);
+    color: var(--text);
     outline: none;
     width: 180px;
-    transition: all var(--transition-speed);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .calculator-inputs input:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 4px var(--accent-glow);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 #resumeResult {
     margin-top: 20px;
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--accent-primary);
+    color: var(--accent);
 }
 
-/* Roadmap Progress Section */
+/* ===== Roadmap Progress ===== */
 #roadmapProgress {
     margin-top: 20px;
     font-size: 1.3rem;
@@ -688,44 +662,45 @@ progress::-moz-progress-bar {
     text-align: center;
 }
 
+/* ===== Labels / Checkboxes ===== */
 section label {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 8px;
     margin-bottom: 10px;
     cursor: pointer;
     font-weight: 500;
-    transition: all var(--transition-speed);
+    transition: border-color 0.2s, background 0.2s;
 }
 
 section label:hover {
-    border-color: var(--accent-primary);
-    background: var(--accent-glow);
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.08);
 }
 
 section label input[type="checkbox"] {
-    accent-color: var(--accent-primary);
+    accent-color: var(--accent);
     width: 18px;
     height: 18px;
 }
 
-/* Canvas Chart */
+/* ===== Chart ===== */
 #careerChart {
     max-width: 600px;
     margin: 30px auto;
 }
 
-/* Internships & Interview Questions */
+/* ===== Internships & Interview Questions ===== */
 #internships,
 #interviewQuestions {
-    background: var(--bg-primary);
+    background: var(--bg);
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     margin-top: 20px;
     line-height: 2;
 }
@@ -735,18 +710,18 @@ section label input[type="checkbox"] {
     display: none;
 }
 
-/* Footer Section */
+/* ===== Footer ===== */
 footer {
-    background: var(--footer-bg);
+    background: var(--nav-bg);
     color: #94a3b8;
     text-align: center;
     padding: 30px;
     margin-top: 80px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
     font-size: 0.95rem;
 }
 
-/* Responsive Styles */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;

@@ -40,10 +40,10 @@ function showCareerResult() {
         return;
     }
 
-    let ai = ((aiScore / total) * 100).toFixed(1);
-    let web = ((webScore / total) * 100).toFixed(1);
-    let cyber = ((cyberScore / total) * 100).toFixed(1);
-    let data = ((dataScore / total) * 100).toFixed(1);
+    let ai = parseFloat(((aiScore / total) * 100).toFixed(1));
+    let web = parseFloat(((webScore / total) * 100).toFixed(1));
+    let cyber = parseFloat(((cyberScore / total) * 100).toFixed(1));
+    let data = parseFloat(((dataScore / total) * 100).toFixed(1));
 
     document.getElementById("result").innerHTML = `
     <h3>Career Compatibility</h3>
@@ -78,8 +78,6 @@ function showCareerResult() {
     scores.sort((a, b) => b.score - a.score);
     if (scores[0].score > 0) {
         selectCareer(scores[0].code);
-        showInternships(scores[0].code);
-        showinterviewQuestions(scores[0].code);
     }
 
     drawChart(ai, web, cyber, data);
@@ -257,6 +255,13 @@ function resetQuiz() {
 
     document.getElementById("result").innerHTML = "";
     document.getElementById("roadmapResult").innerHTML = "Select a career to view roadmap.";
+    document.getElementById("internships").innerHTML = "";
+    document.getElementById("interviewQuestions").innerHTML = "";
+
+    if (typeof careerChartInstance !== "undefined" && careerChartInstance !== null) {
+        careerChartInstance.destroy();
+        careerChartInstance = null;
+    }
 }
 
 function getScores() {

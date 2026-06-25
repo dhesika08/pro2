@@ -137,8 +137,15 @@ function selectCareer(careerCode) {
     }
     localStorage.setItem("career", displayName);
     generateRoadmap(careerCode);
+    
     if (typeof updateDashboard === "function") {
         updateDashboard();
+    }
+    if (typeof showInternships === "function") {
+        showInternships(careerCode);
+    }
+    if (typeof showinterviewQuestions === "function") {
+        showinterviewQuestions(careerCode);
     }
 }
 

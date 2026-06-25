@@ -88,7 +88,24 @@ Tracks learning progress through
 
 --> Predicts expected salary ranges for different careers
 
-14. Download Career Report:
+14. Productivity Features:
+
+  --> Daily Study Streak
+  --> Goal Tracker
+  --> Study Timer
+  --> Quick Notes
+  --> Daily Coding Challenges
+  --> Motivational Quotes
+
+15. User Features:
+
+  --> User Profile
+  --> Profile Picture Upload
+  --> Theme Selector
+  --> Achievement Badges
+  --> Dark Mode
+
+16. Download Career Report:
 
 --> Generates and downloads a career report
 
@@ -100,6 +117,8 @@ Frontend
   --> HTML5
   --> CSS3
   --> JavaScript
+  --> Chart.js
+  --> Responsive Web Design
 
 Storage
 
@@ -123,7 +142,16 @@ Design
   ├── quiz.js
   ├── roadmap.js
   ├── dashboard.js
+  ├── auth.js
+  ├── profile.js
+  ├── streak.js
+  ├── quotes.js
+  ├── goal.js
+  ├── timer.js
+  ├── notes.js
+  ├── profilePic.js
   ├── README.md
+
 
 
   How To Run
@@ -138,14 +166,46 @@ Design
   6. Start exploring Career Compass AI
 
 
+  PROJECT HIGHLIGHTS
+
+    --> Career Assessment Quiz
+    --> Career Compatibility Chart
+    --> AI Career Recommendations
+    --> Personalized Learning Roadmaps
+    --> Internship Suggestions
+    --> Resume Builder
+    --> Resume Score Calculator
+    --> AI Career Chatbot
+    --> Skill Gap Analyzer
+    --> Career Salary Predictor
+    --> Dashboard Analytics
+    --> Progress Tracking
+    --> Roadmap Completion Tracker
+    --> PDF Career Report
+    --> User Profile Management
+    --> Profile Picture Upload
+    --> Theme Selector
+    --> Dark Mode
+    --> Achievement Badges
+    --> Goal Tracker
+    --> Study Timer
+    --> Daily Coding Challenge
+    --> Motivational Quote Generator
+    --> Notes Manager
+    --> Local Storage Integration
+    --> Responsive Design
+
+
   FUTURE ENHANCEMENTS
 
-  --> AI-powered chatbot using OpenAI API
-  --> PDF Resume Generator
-  --> User Login System
+  --> AI Resume Reviewer
+  --> AI Interview Simulator
+  --> Voice Assistant
   --> Firebase Database Integration
+  --> Cloud Database
   --> Online Course Recommendations
+  --> Company Recommendation Engine
   --> Career News Feed
-  --> Interview Preparation Section
-  --> Certificate Management System
+  --> Portfolio Analyzer
+  --> Interview Practice Platform
 
